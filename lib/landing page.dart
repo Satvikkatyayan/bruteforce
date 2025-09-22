@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sih2025/homescreen.dart';
 class landing_page extends StatefulWidget {
   const landing_page({super.key});
 
@@ -53,7 +54,7 @@ class _landing_pageState extends State<landing_page> {
                       color: const Color(0xFFEFF7F2),
                       child: Center(
                         child: Image.asset(
-                          'assets/images/onboarding.png',
+                          'assets/images/onboarding.jpg',
                           width: imageSize,
                           height: imageSize,
                           fit: BoxFit.cover,
@@ -68,7 +69,7 @@ class _landing_pageState extends State<landing_page> {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: () => Navigator.pushNamed(context, '/login'),
+                    onPressed: () => {},
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       side: const BorderSide(color: Color(0xFF6BBF67), width: 2),
