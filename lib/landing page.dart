@@ -55,7 +55,7 @@ class _landing_pageState extends State<landing_page> {
                       color: const Color(0xFFEFF7F2),
                       child: Center(
                         child: Image.asset(
-                          'assets/images/onboarding.png',
+                          'assets/images/onboarding.jpg',
                           width: imageSize,
                           height: imageSize,
                           fit: BoxFit.cover,
