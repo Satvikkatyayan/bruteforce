@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "78015902895",
+    "project_id": "sihbruteforce",
+    "storage_bucket": "sihbruteforce.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78015902895:android:4f44a661fd2521e6df105a",
+        "android_client_info": {
+          "package_name": "com.example.sih2025"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78015902895-5fsl01hus7acutpnntj4c2omr6b6e5e9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHiOALZSq_wbZc2syTaw3mlhlb87s9Rso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78015902895-5fsl01hus7acutpnntj4c2omr6b6e5e9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "78015902895-drdoa7f4qj6djlqkqm7mnc5u8ktoss80.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sih2025"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
