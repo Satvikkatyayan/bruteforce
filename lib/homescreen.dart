@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sih2025/profile.dart';
 // Assuming your task screen is in a file named 'task.dart'
 import 'package:sih2025/task.dart';
 
@@ -240,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildBottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed, // This ensures all labels are visible
+      type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
       selectedItemColor: Colors.green[600],
       unselectedItemColor: Colors.grey[400],
@@ -265,9 +266,30 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       onTap: (index) {
-        // Handle navigation to other screens
+        // Handle navigation based on the selected tab index
+        switch (index) {
+          case 0: // Home - already on this page
+            break;
+          case 1: // Tasks
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const tasks(topic: "all tasks")),
+            // );
+            break;
+          case 2: // Community
+          // Navigate to community page
+          // Example: Navigator.push(context, MaterialPageRoute(builder: (context) => CommunityPage()));
+            break;
+          case 3: // Profile
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfilePage()),
+            );
+            break;
+        }
       },
     );
   }
+
 }
 
