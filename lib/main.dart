@@ -1,38 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:sih2025/landing%20page.dart';
-import 'package:sih2025/loginpage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:sih2025/landing%20page.dart'; // Import dotenv
+import 'package:sih2025/homescreen.dart'; // Ensure your HomeScreen is imported
 
-import 'firebase_options.dart';
-// Import your firebase options file if you have one
-// import 'firebase_options.dart';
-
-void main() async {
-  // Ensure Flutter is initialized
+Future<void> main() async {
+  // Ensures that Flutter's binding (its connection to the native platform)
+  // is initialized before any async operations like loading dotenv.
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Firebase
-  await Firebase.initializeApp(
-    // If you have firebase_options.dart, use this:
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // This is the core line for flutter_dotenv: it loads the variables
+  // from your .env file into memory so they can be accessed later.
+  await dotenv.load(fileName: ".env");
 
-  runApp(const MyApp());
+  // Once dotenv is loaded, you can safely run your app.
+  runApp(const MyApp()); // Your main app widget
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Eco App',
+      title: 'Eco Game',
       theme: ThemeData(
-        primaryColor: const Color(0xFF4A7C59),
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4A7C59)),
-        useMaterial3: true,
+        primarySwatch: Colors.green,
       ),
+      // Make sure this points to your actual home screen
       home: const landing_page(),
     );
   }

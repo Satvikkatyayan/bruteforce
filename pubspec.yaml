@@ -34,6 +34,8 @@ dependencies:
   cloud_firestore: ^6.0.0
   flutter:
     sdk: flutter
+  http: ^1.2.1
+  flutter_dotenv: ^5.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -64,6 +66,7 @@ flutter:
   assets:
     - assets/images/onboarding.jpg
     - assets/images/homebackground.png
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

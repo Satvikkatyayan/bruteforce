@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sih2025/loginpage.dart';
-import 'package:sih2025/signup.dart';
+import 'package:sih2025/homescreen.dart';
 class landing_page extends StatefulWidget {
   const landing_page({super.key});
 
@@ -70,12 +69,7 @@ class _landing_pageState extends State<landing_page> {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login()),
-                      );
-                    },
+                    onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()))},
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       side: const BorderSide(color: Color(0xFF6BBF67), width: 2),
@@ -95,12 +89,7 @@ class _landing_pageState extends State<landing_page> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUp()),
-                      );
-                    },
+                    onPressed: () => Navigator.pushNamed(context, '/signup'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF6BBF67),
                       padding: const EdgeInsets.symmetric(vertical: 14),
