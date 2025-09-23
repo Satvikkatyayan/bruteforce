@@ -10,8 +10,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Helper method to show a dialog when a hotspot is tapped
-  void _showHotspotDialog(BuildContext context, String title, String content) {
+  // --- UPDATED HELPER METHOD ---
+  // Now accepts a 'topic' to pass to the tasks screen
+  void _showHotspotDialog(BuildContext context, String title, String content, String topic) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -23,9 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton(
               child: const Text('Learn More'),
               onPressed: () {
-                // Navigate to the task screen when 'Learn More' is pressed
+                // This could navigate to a different learning screen in the future
                 Navigator.of(context).pop(); // Close the dialog first
-                Navigator.push(context, MaterialPageRoute(builder: (context) => tasks(topic: "water preservation")));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => tasks(topic: topic)));
               },
             ),
             ElevatedButton(
@@ -37,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: const Text('Start Task', style: TextStyle(color: Colors.white)),
               onPressed: () {
-                // Navigate to the task screen when 'Start Task' is pressed
+                // Navigate to the task screen, now with the correct topic
                 Navigator.of(context).pop(); // Close the dialog first
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const tasks(topic: "recycling")));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => tasks(topic: topic)));
               },
             ),
           ],
@@ -54,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           // 1. Background Image
-          // Replace 'assets/images/world_map.png' with your actual image path
           Image.asset(
             'assets/images/homebackground.png',
             fit: BoxFit.cover,
@@ -66,50 +66,19 @@ class _HomeScreenState extends State<HomeScreen> {
           // 2. Top Bar UI
           _buildTopBar(context),
 
-          // 3. Invisible Hotspots over the background image symbols.
-          // These are positioned to cover the symbols on your map image.
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.55,
-            left: MediaQuery.of(context).size.width * 0.75,
-            child: _buildHotspot(
-                size: 60,
-                icon: Icons.forest_sharp, // Use a Flutter icon
-                iconColor: Colors.greenAccent, // Customize icon color
-                containerColor: Colors.black.withOpacity(0.4), // Make background semi-transparent
-                onTap: () => _showHotspotDialog(
-                    context,
-                    'Recycling Challenge',
-                    'Learn about the importance of recycling and start a task to earn points.'
-              ),
-            ),
-          ),
+          // --- 3. UPDATED Hotspots ---
+          // Each hotspot now has a unique title, content, and topic
           Positioned(
             top: MediaQuery.of(context).size.height * 0.20,
             left: MediaQuery.of(context).size.width * 0.10,
             child: _buildHotspot(
               size: 60,
-              icon: Icons.recycling, // Use a Flutter icon
-              iconColor: Colors.greenAccent, // Customize icon color
-              containerColor: Colors.black.withOpacity(0.4), // Make background semi-transparent
+              icon: Icons.recycling,
               onTap: () => _showHotspotDialog(
-                  context,
-                  'Recycling Challenge',
-                  'Learn about the importance of recycling and start a task to earn points.'
-              ),
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.75,
-            left: MediaQuery.of(context).size.width * 0.75,
-            child: _buildHotspot(
-              size: 60,
-              icon: Icons.water_drop, // Use a Flutter icon
-              iconColor: Colors.greenAccent, // Customize icon color
-              containerColor: Colors.black.withOpacity(0.4), // Make background semi-transparent
-              onTap: () => _showHotspotDialog(
-                  context,
-                  'Recycling Challenge',
-                  'Learn about the importance of recycling and start a task to earn points.'
+                context,
+                'Recycling Challenge',
+                'Learn about the importance of recycling and start a task to earn points.',
+                'Recycling and Waste Management', // Topic for Gemini
               ),
             ),
           ),
@@ -118,13 +87,12 @@ class _HomeScreenState extends State<HomeScreen> {
             left: MediaQuery.of(context).size.width * 0.35,
             child: _buildHotspot(
               size: 60,
-              icon: Icons.spa, // Use a Flutter icon
-              iconColor: Colors.greenAccent, // Customize icon color
-              containerColor: Colors.black.withOpacity(0.4), // Make background semi-transparent
+              icon: Icons.eco, // Using 'eco' for sustainable dev
               onTap: () => _showHotspotDialog(
-                  context,
-                  'Recycling Challenge',
-                  'Learn about the importance of recycling and start a task to earn points.'
+                context,
+                'Sustainable Development',
+                'Explore the principles of sustainable development for a better future.',
+                'Sustainable Development Goals', // Topic for Gemini
               ),
             ),
           ),
@@ -133,13 +101,40 @@ class _HomeScreenState extends State<HomeScreen> {
             left: MediaQuery.of(context).size.width * 0.20,
             child: _buildHotspot(
               size: 60,
-              icon: Icons.nature, // Use a Flutter icon
-              iconColor: Colors.greenAccent, // Customize icon color
-              containerColor: Colors.black.withOpacity(0.4), // Make background semi-transparent
+              icon: Icons.park, // Using 'park' for green spaces
               onTap: () => _showHotspotDialog(
-                  context,
-                  'Recycling Challenge',
-                  'Learn about the importance of recycling and start a task to earn points.'
+                context,
+                'Protect Green Spaces',
+                'Discover the role of parks and forests in our ecosystem and how you can help.',
+                'Protecting Green Spaces and National Parks', // Topic for Gemini
+              ),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.55,
+            left: MediaQuery.of(context).size.width * 0.75,
+            child: _buildHotspot(
+              size: 60,
+              icon: Icons.forest_sharp,
+              onTap: () => _showHotspotDialog(
+                context,
+                'Biodiversity',
+                'Learn about the variety of life on Earth and why it is so important to protect.',
+                'Biodiversity and Ecosystems', // Topic for Gemini
+              ),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.75,
+            left: MediaQuery.of(context).size.width * 0.75,
+            child: _buildHotspot(
+              size: 60,
+              icon: Icons.water_drop,
+              onTap: () => _showHotspotDialog(
+                context,
+                'Water Conservation',
+                'Discover ways to save water in your daily life. Ready to take the challenge?',
+                'Water Conservation', // Topic for Gemini
               ),
             ),
           ),
@@ -180,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(width: 12),
                 const Text(
-                  '2100 Leaves',
+                  '2100 Leaves', // This is a placeholder for now
                   style: TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
@@ -211,28 +206,25 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // This widget creates an invisible tappable area.
+  // This widget creates the tappable icon hotspot
   Widget _buildHotspot({
     required VoidCallback onTap,
     required double size,
-    required IconData icon, // Add an icon parameter
-    Color iconColor = Colors.white, // Default icon color
-    Color containerColor = Colors.transparent, // Default background for the icon
+    required IconData icon,
   }) {
     return GestureDetector(
       onTap: onTap,
-      behavior: HitTestBehavior.translucent, // Ensures the entire area is tappable
       child: Container(
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: containerColor, // A semi-transparent background for visibility
-          shape: BoxShape.circle, // Makes the container round
+          color: Colors.black.withOpacity(0.5), // Semi-transparent background for better visibility
+          shape: BoxShape.circle,
         ),
         child: Icon(
           icon,
-          color: iconColor,
-          size: size * 0.6, // Icon takes up 60% of the container size
+          color: Colors.greenAccent, // A bright color for the icon
+          size: size * 0.6,
         ),
       ),
     );
@@ -240,12 +232,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildBottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed, // This ensures all labels are visible
+      type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
       selectedItemColor: Colors.green[600],
       unselectedItemColor: Colors.grey[400],
       showUnselectedLabels: true,
-      currentIndex: 0, // Set the current index for the 'Home' tab
+      currentIndex: 0,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -265,9 +257,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       onTap: (index) {
-        // Handle navigation to other screens
+        // Handle navigation to other screens here
       },
     );
   }
 }
+
+
 

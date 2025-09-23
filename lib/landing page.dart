@@ -69,7 +69,7 @@ class _landing_pageState extends State<landing_page> {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: () => {},
+                    onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()))},
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       side: const BorderSide(color: Color(0xFF6BBF67), width: 2),
